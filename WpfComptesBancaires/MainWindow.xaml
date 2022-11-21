@@ -1,0 +1,83 @@
+﻿<Window
+    x:Class="WpfComptesBancaires.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfComptesBancaires"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="DAB.exe"
+    Width="800"
+    Height="450"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    TextElement.FontSize="13"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    mc:Ignorable="">
+    <Grid x:Name="grdMain">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Label HorizontalAlignment="Left" Content="Type d'opération" />
+            <ComboBox
+                x:Name="cbxTOP"
+                Width="150"
+                Margin="40,0,0,0"
+                ItemsSource="{Binding LesTypesOp}" />
+        </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Label Content="Compte" />
+            <ComboBox
+                x:Name="cbxCompte"
+                Width="150"
+                Margin="40,0,0,0"
+                DisplayMemberPath="IdCompte"
+                ItemsSource="{Binding LesComptes}" />
+        </StackPanel>
+        <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Label Content="Montant" />
+            <TextBox
+                x:Name="tbxSaisieMontant"
+                Width="150"
+                Margin="40,0,0,0"
+                Text="{Binding Path=Montant, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=250}" />
+        </StackPanel>
+        <StackPanel
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="btnValider"
+                Width="300"
+                Click="btnValider_Click"
+                Content="Valider" />
+            <Button
+                x:Name="btnAnnuler"
+                Width="300"
+                Margin="40,0,0,0"
+                Click="btnAnnuler_Click"
+                Content="Annuler" />
+        </StackPanel>
+    </Grid>
+</Window>
